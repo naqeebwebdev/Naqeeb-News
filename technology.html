@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology News — Naqeeb News</title>
+  <meta name="description" content="Artificial Intelligence, Semiconductors, Software Engineering, Gadgets, Cyber Security, and Digital Transformation.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+</head>
+<body data-category="Technology" data-page="technology">
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <div class="top-date">
+          <span>📅</span>
+          <span id="current-date">Loading date...</span>
+        </div>
+        <div class="top-actions">
+          <a href="contact.html">Contact Editorial Desk</a>
+          <span>|</span>
+          <a href="admin-login.html">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand-logo" aria-label="Naqeeb News Home">
+          <div class="brand-logo-icon">N</div>
+          <div>
+            <div class="brand-title">NAQEEB <span>NEWS</span></div>
+            <div class="brand-tagline">Truth • Integrity • Speed</div>
+          </div>
+        </a>
+
+        <form class="header-search-form" role="search">
+          <input type="text" name="q" class="header-search-input" placeholder="Search news..." aria-label="Search news" required>
+          <button type="submit" class="header-search-btn" aria-label="Submit search">🔍</button>
+        </form>
+      </div>
+    </div>
+
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container nav-container">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <ul class="nav-links" id="nav-links">
+          <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+          <li class="nav-item"><a href="pakistan.html" id="nav-link-pakistan">Pakistan</a></li>
+          <li class="nav-item"><a href="world.html" id="nav-link-world">World</a></li>
+          <li class="nav-item"><a href="sports.html" id="nav-link-sports">Sports</a></li>
+          <li class="nav-item"><a href="technology.html" class="active" id="nav-link-technology">Technology</a></li>
+          <li class="nav-item"><a href="business.html" id="nav-link-business">Business</a></li>
+          <li class="nav-item"><a href="entertainment.html" id="nav-link-entertainment">Entertainment</a></li>
+          <li class="nav-item"><a href="contact.html" id="nav-link-contact">Contact</a></li>
+          <li class="nav-item"><a href="search.html" id="nav-link-search">Search</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div>
+          <h1 class="section-title" id="category-title">Technology News</h1>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">Innovations in AI, hardware architecture, cybersecurity, telecom networks, and modern tech ecosystems.</p>
+        </div>
+        <span class="badge badge-technology" id="category-count">Loading...</span>
+      </div>
+
+      <div class="news-grid" id="category-news-grid">
+        <div class="state-box" style="grid-column: 1 / -1;">
+          <div class="spinner"></div>
+          <p class="state-desc">Fetching Technology stories from Firestore...</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>NAQEEB <span>NEWS</span></h3>
+          <p>Delivering authentic, independent, and timely news reporting covering domestic affairs, global diplomacy, economics, science, culture, and sports.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="pakistan.html">Pakistan News</a></li>
+            <li><a href="world.html">World Affairs</a></li>
+            <li><a href="sports.html">Sports Coverage</a></li>
+            <li><a href="technology.html">Technology & AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">More Sections</h4>
+          <ul class="footer-links">
+            <li><a href="business.html">Business & Economy</a></li>
+            <li><a href="entertainment.html">Entertainment & Arts</a></li>
+            <li><a href="search.html">Search Archive</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Portal Access</h4>
+          <ul class="footer-links">
+            <li><a href="admin-login.html">Admin Login</a></li>
+            <li><a href="admin-panel.html">Editorial Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Naqeeb News Network. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/common.js"></script>
+  <script type="module" src="js/category.js"></script>
+</body>
+</html>

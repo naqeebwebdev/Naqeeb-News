@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidNews(data) {
+      return data.title is string && data.title.size() >= 3 && data.title.size() <= 300
+        && data.description is string && data.description.size() >= 10 && data.description.size() <= 50000
+        && data.category is string && (
+          data.category == 'Pakistan' ||
+          data.category == 'World' ||
+          data.category == 'Sports' ||
+          data.category == 'Technology' ||
+          data.category == 'Business' ||
+          data.category == 'Entertainment'
+        )
+        && data.author is string && data.author.size() >= 2 && data.author.size() <= 100
+        && (data.imageUrl is string && data.imageUrl.size() <= 2048)
+        && (!('imagePath' in data) || (data.imagePath is string && data.imagePath.size() <= 500));
+    }
+
+    function isValidMessage(data) {
+      return data.name is string && data.name.size() >= 2 && data.name.size() <= 100
+        && data.email is string && data.email.size() >= 5 && data.email.size() <= 254
+        && data.message is string && data.message.size() >= 5 && data.message.size() <= 5000;
+    }
+
+    // News Collection Rules
+    match /news/{newsId} {
+      // Anyone can read news
+      allow read: if true;
+      
+      // Only authenticated admin can create news
+      allow create: if isSignedIn() && isValidId(newsId) && isValidNews(incoming());
+      
+      // Only authenticated admin can update news
+      allow update: if isSignedIn() && isValidId(newsId) && isValidNews(incoming());
+      
+      // Only authenticated admin can delete news
+      allow delete: if isSignedIn() && isValidId(newsId);
+    }
+
+    // Contact Messages Collection Rules
+    match /messages/{messageId} {
+      // Anyone can submit a contact inquiry
+      allow create: if isValidId(messageId) && isValidMessage(incoming());
+      
+      // Only authenticated admin can view or delete inquiries
+      allow read, delete: if isSignedIn() && isValidId(messageId);
+      
+      // Messages cannot be modified once sent
+      allow update: if false;
+    }
+  }
+}

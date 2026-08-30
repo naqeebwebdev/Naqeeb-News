@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — Naqeeb News</title>
+  <meta name="description" content="Secure administrative login for editorial staff and content managers of Naqeeb News.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+</head>
+<body data-page="admin-login" style="background-color: var(--bg-subtle);">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <div class="top-date">
+          <span>📅</span>
+          <span id="current-date">Loading date...</span>
+        </div>
+        <div class="top-actions">
+          <a href="index.html">← Back to Public Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-main" style="justify-content: center; padding: 1.5rem 0;">
+        <a href="index.html" class="brand-logo" aria-label="Naqeeb News Home">
+          <div class="brand-logo-icon">N</div>
+          <div>
+            <div class="brand-title">NAQEEB <span>NEWS</span></div>
+            <div class="brand-tagline">Editorial Administration Portal</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" style="display: flex; align-items: center; justify-content: center; padding: 3rem 1.25rem;">
+    <div style="width: 100%; max-width: 440px;">
+
+      <div class="form-card">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div style="font-size: 2.25rem; margin-bottom: 0.25rem;">🔐</div>
+          <h1 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--secondary);">Admin Sign In</h1>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Authenticate with your registered Firebase administrator credentials.
+          </p>
+        </div>
+
+        <div id="login-alert" class="alert alert-error" style="display: none;"></div>
+
+        <form id="admin-login-form">
+          <div class="form-group">
+            <label for="login-email" class="form-label">Admin Email <span class="req">*</span></label>
+            <input type="email" id="login-email" class="form-control" placeholder="admin@naqeebnews.com" required autofocus>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password <span class="req">*</span></label>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required minlength="6">
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block" style="padding: 0.75rem; font-size: 0.9375rem;">
+            Sign In to Dashboard →
+          </button>
+        </form>
+
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.78125rem; color: var(--text-muted);">
+          <strong>Firebase Admin Setup Guide:</strong>
+          <ul style="margin: 0.4rem 0 0 1.2rem; line-height: 1.5;">
+            <li>Admin accounts are created securely inside <strong>Firebase Console > Authentication > Users > Add user</strong>.</li>
+            <li>Passwords are never hardcoded in frontend code or stored in plaintext.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center; font-size: 0.8125rem;">
+      <div>&copy; 2026 Naqeeb News Portal. Secured with Firebase Authentication.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/common.js"></script>
+  <script type="module" src="js/admin-login.js"></script>
+</body>
+</html>

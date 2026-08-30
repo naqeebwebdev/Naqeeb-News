@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "News": {
+      "title": "News Article",
+      "description": "A published news article entity in Naqeeb News",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 300,
+          "description": "The title of the news article"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 50000,
+          "description": "The full body content and description of the news article"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Pakistan", "World", "Sports", "Technology", "Business", "Entertainment"],
+          "description": "Category of news"
+        },
+        "imageUrl": {
+          "type": "string",
+          "maxLength": 2048,
+          "description": "Public download URL of the uploaded news image in Firebase Storage"
+        },
+        "imagePath": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Storage bucket path of the image for deletion"
+        },
+        "author": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Author or editor name who published the article"
+        },
+        "date": {
+          "type": "string",
+          "description": "Publication date string or ISO date"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when document was created"
+        }
+      },
+      "required": ["title", "description", "category", "imageUrl", "author"]
+    },
+    "ContactMessage": {
+      "title": "Contact Inquiry Message",
+      "description": "Contact form inquiry message submitted by website visitors",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Sender full name"
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 254,
+          "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+          "description": "Sender email address"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 5000,
+          "description": "Message content"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when message was submitted"
+        }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/news/{newsId}": {
+      "schema": {
+        "$ref": "#/entities/News"
+      },
+      "description": "Collection of all news articles published on Naqeeb News"
+    },
+    "/messages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/ContactMessage"
+      },
+      "description": "Collection of contact inquiries submitted by visitors"
+    }
+  }
+}

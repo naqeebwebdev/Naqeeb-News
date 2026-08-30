@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search News — Naqeeb News</title>
+  <meta name="description" content="Search published articles and archives on Naqeeb News by keyword or topic.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+</head>
+<body data-page="search">
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <div class="top-date">
+          <span>📅</span>
+          <span id="current-date">Loading date...</span>
+        </div>
+        <div class="top-actions">
+          <a href="contact.html">Contact Editorial Desk</a>
+          <span>|</span>
+          <a href="admin-login.html">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="brand-logo" aria-label="Naqeeb News Home">
+          <div class="brand-logo-icon">N</div>
+          <div>
+            <div class="brand-title">NAQEEB <span>NEWS</span></div>
+            <div class="brand-tagline">Truth • Integrity • Speed</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="container nav-container">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <ul class="nav-links" id="nav-links">
+          <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+          <li class="nav-item"><a href="pakistan.html" id="nav-link-pakistan">Pakistan</a></li>
+          <li class="nav-item"><a href="world.html" id="nav-link-world">World</a></li>
+          <li class="nav-item"><a href="sports.html" id="nav-link-sports">Sports</a></li>
+          <li class="nav-item"><a href="technology.html" id="nav-link-technology">Technology</a></li>
+          <li class="nav-item"><a href="business.html" id="nav-link-business">Business</a></li>
+          <li class="nav-item"><a href="entertainment.html" id="nav-link-entertainment">Entertainment</a></li>
+          <li class="nav-item"><a href="contact.html" id="nav-link-contact">Contact</a></li>
+          <li class="nav-item"><a href="search.html" class="active" id="nav-link-search">Search</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Search Input Header -->
+      <div class="form-card" style="max-width: 800px; margin: 0 auto 2.5rem; text-align: center;">
+        <h1 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--secondary); margin-bottom: 0.5rem;">
+          Search News Archive
+        </h1>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          Find articles across Pakistan, World, Sports, Tech, Business, and Entertainment.
+        </p>
+
+        <form id="search-page-form" style="display: flex; gap: 0.5rem; max-width: 600px; margin: 0 auto;">
+          <input type="text" id="search-page-input" class="form-control" placeholder="Enter keywords (e.g. climate, cricket, energy, AI)..." aria-label="Search term" autofocus>
+          <button type="submit" class="btn btn-primary" style="padding: 0 1.5rem;">Search</button>
+        </form>
+
+        <div style="margin-top: 1rem; font-size: 0.8125rem; color: var(--text-light); text-align: left; background: var(--bg-subtle); padding: 0.75rem; border-radius: var(--radius-sm);">
+          💡 <strong>Firestore Search Note:</strong> Cloud Firestore does not natively support full-text wildcard search out of the box. For this web project, articles are fetched and filtered with fast client-side substring matching across titles, summaries, categories, and authors.
+        </div>
+      </div>
+
+      <!-- Results Header -->
+      <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div id="search-query-summary" style="font-size: 1.125rem; color: var(--secondary);">
+          Showing news articles
+        </div>
+        <span class="badge badge-default" id="search-count-badge">0 Results</span>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="news-grid" id="search-results-grid">
+        <div class="state-box" style="grid-column: 1 / -1;">
+          <div class="state-icon">🔍</div>
+          <h3 class="state-title">Ready to Search</h3>
+          <p class="state-desc">Enter any search keyword above to explore matching news stories.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>NAQEEB <span>NEWS</span></h3>
+          <p>Delivering authentic, independent, and timely news reporting covering domestic affairs, global diplomacy, economics, science, culture, and sports.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="pakistan.html">Pakistan News</a></li>
+            <li><a href="world.html">World Affairs</a></li>
+            <li><a href="sports.html">Sports Coverage</a></li>
+            <li><a href="technology.html">Technology & AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">More Sections</h4>
+          <ul class="footer-links">
+            <li><a href="business.html">Business & Economy</a></li>
+            <li><a href="entertainment.html">Entertainment & Arts</a></li>
+            <li><a href="search.html">Search Archive</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Portal Access</h4>
+          <ul class="footer-links">
+            <li><a href="admin-login.html">Admin Login</a></li>
+            <li><a href="admin-panel.html">Editorial Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Naqeeb News Network. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/common.js"></script>
+  <script type="module" src="js/search.js"></script>
+</body>
+</html>

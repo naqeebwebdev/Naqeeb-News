@@ -1,0 +1,6 @@
+{
+  "name": "Naqeeb News",
+  "description": "A complete, modern, responsive full-stack news website with category filtering, article details, search, contact inquiries, and secure admin management with Firebase Firestore, Auth, and Storage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

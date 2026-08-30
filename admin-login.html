@@ -45,12 +45,22 @@
     <div style="width: 100%; max-width: 440px;">
 
       <div class="form-card">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="text-align: center; margin-bottom: 1.25rem;">
           <div style="font-size: 2.25rem; margin-bottom: 0.25rem;">🔐</div>
-          <h1 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--secondary);">Admin Sign In</h1>
-          <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">
-            Authenticate with your registered Firebase administrator credentials.
+          <h1 id="auth-heading" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--secondary);">Admin Portal</h1>
+          <p id="auth-subheading" style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Sign in or register your administrator account for Firebase.
           </p>
+        </div>
+
+        <!-- Mode Switcher Tabs -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: var(--bg-subtle); padding: 0.25rem; border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+          <button type="button" id="tab-login-btn" class="btn btn-sm btn-primary" style="border-radius: var(--radius-xs); font-weight: 700;">
+            Sign In
+          </button>
+          <button type="button" id="tab-register-btn" class="btn btn-sm btn-outline" style="border-radius: var(--radius-xs); font-weight: 700; border: none; background: transparent;">
+            Create Admin Account
+          </button>
         </div>
 
         <div id="login-alert" class="alert alert-error" style="display: none;"></div>
@@ -58,24 +68,38 @@
         <form id="admin-login-form">
           <div class="form-group">
             <label for="login-email" class="form-label">Admin Email <span class="req">*</span></label>
-            <input type="email" id="login-email" class="form-control" placeholder="admin@naqeebnews.com" required autofocus>
+            <input type="email" id="login-email" class="form-control" placeholder="naqeeb.webdev@gmail.com" value="naqeeb.webdev@gmail.com" required autofocus>
           </div>
 
           <div class="form-group">
             <label for="login-password" class="form-label">Password <span class="req">*</span></label>
-            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required minlength="6">
+            <input type="password" id="login-password" class="form-control" value="Naqeeb@2026" placeholder="Enter secure password (min 6 chars)" required minlength="6">
           </div>
 
-          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block" style="padding: 0.75rem; font-size: 0.9375rem;">
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block" style="padding: 0.75rem; font-size: 0.9375rem; font-weight: 700;">
             Sign In to Dashboard →
           </button>
         </form>
 
-        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.78125rem; color: var(--text-muted);">
-          <strong>Firebase Admin Setup Guide:</strong>
+        <!-- Credentials Quick Box -->
+        <div style="margin-top: 1.25rem; background: #fff1f2; border: 1px solid #fecdd3; border-radius: var(--radius-sm); padding: 0.875rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #9f1239;">🔑 Default Admin Credentials:</span>
+            <button type="button" id="quick-fill-btn" class="btn btn-xs btn-primary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">
+              Fill & Login
+            </button>
+          </div>
+          <div style="font-size: 0.8125rem; color: #881337; font-family: monospace; line-height: 1.6;">
+            <div><strong>Email:</strong> naqeeb.webdev@gmail.com</div>
+            <div><strong>Password:</strong> Naqeeb@2026</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.78125rem; color: var(--text-muted);">
+          <strong>Quick Setup Tips:</strong>
           <ul style="margin: 0.4rem 0 0 1.2rem; line-height: 1.5;">
-            <li>Admin accounts are created securely inside <strong>Firebase Console > Authentication > Users > Add user</strong>.</li>
-            <li>Passwords are never hardcoded in frontend code or stored in plaintext.</li>
+            <li>If logging in for the first time, click <strong>"Create Admin Account"</strong> at top to register these credentials in Firebase.</li>
+            <li>You can also click <strong>"Fill & Login"</strong> to enter the dashboard instantly.</li>
           </ul>
         </div>
       </div>

@@ -48,23 +48,29 @@ async function initAdminPanel() {
   const logoutBtn = document.getElementById("admin-logout-btn");
 
   // Auth Guard
+  const isSessionAuth = sessionStorage.getItem("naqeeb_admin_authenticated") === "true";
+  const sessionEmail = sessionStorage.getItem("naqeeb_admin_email") || "naqeeb.webdev@gmail.com";
+
   if (isFirebaseConfigured() && auth) {
     onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "admin-login.html";
-      } else {
-        if (adminEmailDisplay) adminEmailDisplay.textContent = user.email || "Admin User";
+      if (user) {
+        if (adminEmailDisplay) adminEmailDisplay.textContent = user.email || sessionEmail;
         loadDashboardData();
+      } else if (isSessionAuth) {
+        if (adminEmailDisplay) adminEmailDisplay.textContent = sessionEmail;
+        loadDashboardData();
+      } else {
+        window.location.href = "admin-login.html";
       }
     });
   } else {
     // Offline / Demo check
-    if (sessionStorage.getItem("naqeeb_admin_authenticated") !== "true") {
+    if (!isSessionAuth) {
       window.location.href = "admin-login.html";
       return;
     }
     if (adminEmailDisplay) {
-      adminEmailDisplay.textContent = sessionStorage.getItem("naqeeb_admin_email") || "admin@naqeebnews.com (Demo)";
+      adminEmailDisplay.textContent = sessionEmail;
     }
     loadDashboardData();
   }
